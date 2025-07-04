@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  ai-chatbot:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 AI Teman Belajar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🤖 AI Teman Belajar</h1>
+            <p>Halo! Aku adalah AI yang siap membantu kamu belajar. Tanya apa saja ya! 😊</p>
+        </header>
+
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <p>Halo! Aku siap membantu kamu belajar. Mau tanya tentang apa hari ini? 📚✨</p>
+                        <span class="message-time">Sekarang</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="input-group">
+                    <input type="text" id="questionInput" placeholder="Ketik pertanyaan kamu di sini..." maxlength="500">
+                    <button id="sendButton" onclick="sendQuestion()">
+                        <span id="sendIcon">📤</span>
+                        <span id="loadingIcon" style="display: none;">⏳</span>
+                    </button>
+                </div>
+                <div class="input-info">
+                    <span id="charCount">0/500</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button onclick="showHistory()" class="btn-secondary">📜 Lihat Riwayat</button>
+            <button onclick="clearHistory()" class="btn-danger">🗑️ Hapus Riwayat</button>
+            <button onclick="showTips()" class="btn-info">💡 Tips Bertanya</button>
+        </div>
+    </div>
+
+    <!-- Modal untuk Tips -->
+    <div id="tipsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeTips()">&times;</span>
+            <h2>💡 Tips Bertanya yang Baik</h2>
+            <div class="tips-list">
+                <div class="tip-item">
+                    <span class="tip-icon">📚</span>
+                    <div>
+                        <strong>Pelajaran Sekolah</strong>
+                        <p>"Jelaskan tentang fotosintesis dengan mudah"</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-icon">🧮</span>
+                    <div>
+                        <strong>Matematika</strong>
+                        <p>"Bagaimana cara menghitung luas lingkaran?"</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-icon">🌍</span>
+                    <div>
+                        <strong>Pengetahuan Umum</strong>
+                        <p>"Mengapa langit berwarna biru?"</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-icon">📝</span>
+                    <div>
+                        <strong>Bantuan Tugas</strong>
+                        <p>"Bantu aku membuat ringkasan tentang..."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal untuk Riwayat -->
+    <div id="historyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeHistory()">&times;</span>
+            <h2>📜 Riwayat Percakapan</h2>
+            <div id="historyContent">
+                <p>Memuat riwayat...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
