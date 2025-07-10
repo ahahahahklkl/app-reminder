@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello App</title>
+</head>
+<body>
+  <h1>Halo Nita 👋</h1>
+  <button onclick="getMessage()">Cek Pesan</button>
+  <p id="result"></p>
+
+  <script>
+    async function getMessage() {
+      try {
+        const response = await fetch('https://1t9suoexn4.execute-api.us-west-2.amazonaws.com/prod'); // ganti kalau ada path khusus
+        const data = await response.json();
+        document.getElementById("result").innerText = data.message || JSON.stringify(data);
+      } catch (error) {
+        document.getElementById("result").innerText = "Gagal mengambil data 😢";
+        console.error("Error:", error);
+      }
+    }
+  </script>
+</body>
+</html>
